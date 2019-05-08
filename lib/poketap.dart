@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/gestures.dart';
+import 'package:poketap/components/Arena.dart';
 import 'package:poketap/components/Pokemon.dart';
 
 class PokeTap extends Game {
@@ -10,6 +11,7 @@ class PokeTap extends Game {
   double tileSize;
   Random rnd;
   List<Pokemon> pokemon;
+  Arena background;
 
   PokeTap() {
     initialize();
@@ -19,20 +21,18 @@ class PokeTap extends Game {
     pokemon = List<Pokemon>();
     rnd = Random();
     resize(await Flame.util.initialDimensions());
+    background = Arena(this);
     spawnPokemon();
   }
 
   void spawnPokemon() {
-    double x = rnd.nextDouble() * (screenSize.width - tileSize);
-    double y = rnd.nextDouble() * (screenSize.height - tileSize);
+    double x = rnd.nextDouble() * (screenSize.width - tileSize * 2);
+    double y = rnd.nextDouble() * (screenSize.height - tileSize * 2);
     pokemon.add(Pokemon(this, x, y));
   }
 
   void render(Canvas canvas) {
-    Rect bgRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
-    Paint bgPaint = Paint();
-    bgPaint.color = Color(0xff01a3a4);
-    canvas.drawRect(bgRect, bgPaint);
+    background.render(canvas);
     pokemon.forEach((Pokemon p) => p.render(canvas));
   }
 

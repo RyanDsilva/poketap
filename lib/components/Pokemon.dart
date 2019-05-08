@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flame/sprite.dart';
 import 'package:poketap/poketap.dart';
 
 class Pokemon {
@@ -6,21 +7,26 @@ class Pokemon {
   bool isCaptured = false;
   bool isOffScreen = false;
   Rect pokeRect;
-  Paint pokePaint;
+  Sprite pokeSprite;
+  Sprite deadSprite;
 
   Pokemon(this.game, double x, double y) {
-    pokeRect = Rect.fromLTWH(x, y, game.tileSize, game.tileSize);
-    pokePaint = Paint();
-    pokePaint.color = Color(0xffff6b6b);
+    pokeRect = Rect.fromLTWH(x, y, game.tileSize * 2, game.tileSize * 2);
+    pokeSprite = Sprite('pikachu-active.png');
+    deadSprite = Sprite('pikachu.png');
   }
 
   void render(Canvas c) {
-    c.drawRect(pokeRect, pokePaint);
+    if (isCaptured) {
+      deadSprite.renderRect(c, pokeRect.inflate(2));
+    } else {
+      pokeSprite.renderRect(c, pokeRect.inflate(2));
+    }
   }
 
   void update(double t) {
     if (isCaptured) {
-      pokeRect = pokeRect.translate(0, game.tileSize * 12 * t);
+      pokeRect = pokeRect.translate(0, game.tileSize * 7.5 * t);
     }
     if (pokeRect.top > game.screenSize.height) {
       isOffScreen = true;
@@ -29,7 +35,6 @@ class Pokemon {
 
   void onTapDown() {
     isCaptured = true;
-    pokePaint.color = Color(0xfffdcb6e);
     game.spawnPokemon();
   }
 }

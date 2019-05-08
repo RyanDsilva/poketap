@@ -2,11 +2,11 @@
 
 > Simple Pokemon game built in Flutter
 
+[In Development]
+
 ## Getting Started
 
----
-
-> Make sure you have the Flutter SDK and the Android SDK installed that are required to build a flutter project. Check the Flutter website for installation instructions.
+Make sure you have the Flutter SDK and the Android SDK installed that are required to build a flutter project. Check the Flutter website for installation instructions.
 
 ```bash
 git clone https://github.com/RyanDsilva/poketap.git
