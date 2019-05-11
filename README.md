@@ -1,8 +1,8 @@
 # PokeTap 🐁
 
-> Simple Pokemon game built in Flutter
+> Simple Pokemon-tapping game built with Flutter
 
-[In Development]
+![PokeTap](./poketap.gif)
 
 ## Getting Started
 
