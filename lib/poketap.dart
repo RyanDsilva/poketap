@@ -42,6 +42,7 @@ class PokeTap extends Game {
     rnd = Random();
     resize(await Flame.util.initialDimensions());
     background = Arena(this);
+    highscoreDisplay = HighscoreDisplay(this);
     pokeSpawner = Spawner(this);
     score = 0;
     Flame.audio.disableLog();
@@ -51,7 +52,6 @@ class PokeTap extends Game {
     startButton = StartButton(this);
     lostView = LostView(this);
     scoreDisplay = ScoreDisplay(this);
-    highscoreDisplay = HighscoreDisplay(this);
   }
 
   void spawnPokemon() {
