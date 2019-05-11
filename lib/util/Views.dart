@@ -1,4 +1,4 @@
-enum Views {
+enum View {
   Home,
   Playing,
   GameOver,
