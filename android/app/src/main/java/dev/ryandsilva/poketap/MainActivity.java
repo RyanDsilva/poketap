@@ -1,4 +1,4 @@
-package com.example.poketap;
+package dev.ryandsilva.poketap;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
